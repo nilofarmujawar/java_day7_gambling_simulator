@@ -5,7 +5,6 @@ import java.util.Scanner; // import scanner class
 public class Gambler {
 
 
-
     static int AMOUNT_OF_STAKE=100;
     static int TOTAL_AMOUNT_DIFF_IN_MONTH=0;
     static int BET_AMOUNT=1;
@@ -37,20 +36,23 @@ public class Gambler {
 
             }
             if(cashInHand==150 || cashInHand==50) {
-
                 System.out.println("Player would like to resign for current day"+i);
             }
             if(cashInHand > 100) {
                 int amountWonPerDay = cashInHand - AMOUNT_OF_STAKE;
                 System.out.println("Player won day"+i+" RS "+amountWonPerDay);
-
             }
             else if(cashInHand < 100){
                 int amountLostPerDay = AMOUNT_OF_STAKE - cashInHand;
                 System.out.println("Player lost day"+i+" RS "+amountLostPerDay);
 
             }
-
+            if(cashInHand == 150) {
+                System.out.println("Day"+i+" is gamblers Luckiest day as he won maximum amount "+cashInHand+" RS");
+            }
+            else if (cashInHand == 50) {
+                System.out.println("Day"+i+" is gamblers Unluckiest day as he lost maximum amount "+cashInHand+" RS");
+            }
             TOTAL_AMOUNT = TOTAL_AMOUNT + cashInHand;
         }
         System.out.println("Total amount player has after 20 days as per day included = "+TOTAL_AMOUNT+" $");
