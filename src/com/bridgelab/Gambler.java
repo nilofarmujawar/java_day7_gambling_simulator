@@ -5,7 +5,9 @@ import java.util.Scanner; // import scanner class
 public class Gambler {
 
 
+
     static int AMOUNT_OF_STAKE=100;
+    static int TOTAL_AMOUNT_DIFF_IN_MONTH=0;
     static int BET_AMOUNT=1;
     static int WON=1;
     static int LOST=0;
@@ -32,20 +34,32 @@ public class Gambler {
                     default:
                         System.out.println("default");
                 }
-                if(play == 1) {
-                    System.out.println("Player won the current play");
-                }
-                else {
-                    System.out.println("Player lost the current play");
-                }
 
             }
             if(cashInHand==150 || cashInHand==50) {
+
                 System.out.println("Player would like to resign for current day"+i);
+            }
+            if(cashInHand > 100) {
+                int amountWonPerDay = cashInHand - AMOUNT_OF_STAKE;
+                System.out.println("Player won day"+i+" RS "+amountWonPerDay);
 
             }
+            else if(cashInHand < 100){
+                int amountLostPerDay = AMOUNT_OF_STAKE - cashInHand;
+                System.out.println("Player lost day"+i+" RS "+amountLostPerDay);
+
+            }
+
             TOTAL_AMOUNT = TOTAL_AMOUNT + cashInHand;
         }
         System.out.println("Total amount player has after 20 days as per day included = "+TOTAL_AMOUNT+" $");
+        TOTAL_AMOUNT_DIFF_IN_MONTH = TOTAL_AMOUNT - AMOUNT_OF_STAKE * 20;
+        if(TOTAL_AMOUNT_DIFF_IN_MONTH > 0) {
+            System.out.println("Total cash gambler won "+TOTAL_AMOUNT_DIFF_IN_MONTH+" $");
+        }
+        else {
+            System.out.println("Total cash gambler lost in that month "+TOTAL_AMOUNT_DIFF_IN_MONTH+" $");
+        }
     }
 }
